@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-#if !defined(__x86_64__) || !defined(__x86_64)
+#if !defined(__x86_64__) && !defined(__x86_64)
 #  error This code uses instructions specific to the x86_64 architecture.
 #endif
 
