@@ -31,11 +31,16 @@
  *   ecx: retry count
  *   r8: current buffer offset
  */
+.section .note.GNU-stack, "", @progbits
+
 .global _rdrand_fill
+
+.section .text
+
 _rdrand_fill:
         endbr64
 
-        movq        $0,%r8              // init buffer offset
+        xor         %r8,%r8             // init buffer offset
 
         // If the buffer size is not a multiple of 8 bytes, it is an error
         movq        %rsi,%rax
@@ -44,13 +49,13 @@ _rdrand_fill:
         jz          rf__enter
 
         // ...it wasn't.
-        movq        $0,%rax              // return failure
+        xor         %rax,%rax            // return failure
         jmp         rf__ret
 
 rf__enter:
-        mov         $0,%ecx              // retries = 0
+        xor         %ecx,%ecx            // retries = 0
 rf__try:
-        lfence                          // spectre?
+        lfence                           // spectre?
         rdrand      %rax
         jc          rf__ok               // rdrand sets carry flag on success
 
@@ -58,7 +63,7 @@ rf__try:
         inc         %ecx
         cmpl        %edx,%ecx
         jl          rf__try
-        movq        $0,%rax              // return failure
+        xor         %rax,%rax            // return failure
         jmp         rf__ret
 
 rf__ok:

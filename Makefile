@@ -1,7 +1,7 @@
 .PHONY: clean
 
 CC=gcc
-CFLAGS=-march=ivybridge -Wall -O -g -fomit-frame-pointer
+CFLAGS=-march=native -Wall -O -g
 
 # Uncomment the next line to disable assertions and buffer-zeroing
 #CFLAGS+=-DNDEBUG
