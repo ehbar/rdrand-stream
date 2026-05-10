@@ -26,6 +26,6 @@ This is an un-peer-reviewed personal project.  I am not a mathemetician, cryptog
 
 # License and Copyright
 
-Copyright © 2021 Eric Barrett <eric@ericbarrett.com>
+Copyright © 2021,2026 Eric Barrett <eric@ericbarrett.com>
 
 Released under the MIT license; see [LICENSE.txt](LICENSE.txt).
