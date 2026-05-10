@@ -31,7 +31,12 @@
  *   ecx: retry count
  *   r8: current buffer offset
  */
+.section .note.GNU-stack, "", @progbits
+
 .global _rdrand_fill
+
+.section .text
+
 _rdrand_fill:
         endbr64
 
